@@ -15,6 +15,8 @@ class bitbucket::params {
         $json_packages         = [ 'ruby-json', 'rubygem-json' ]
       } elsif $::operatingsystemmajrelease == '2018' {
         $json_packages         = [ 'ruby-json', 'rubygem-json' ]
+      } elsif $::operatingsystem == 'OracleLinux' and $::operatingsystemmajrelease == '8' {
+        $json_packages = [ 'rubygem-json' ]  # or the correct package name for OL8
       } else {
         fail("${::operatingsystem} ${::operatingsystemmajrelease} not supported")
       }
