@@ -5,6 +5,8 @@
 #
 BITBUCKET_HOME="<%= scope.lookupvar('bitbucket::homedir') %>"
 JAVA_HOME=<%= scope.lookupvar('bitbucket::javahome') %>
+BITBUCKET_HOME="/opt/atlassian/application-data/bitbucket-home"
+JAVA_HOME="/usr/lib/jvm/java-17-openjdk-17.0.13.0.11-3.0.1.el8.x86_64"
 
 # resolve links - $0 may be a softlink - stolen from catalina.sh
 PRG="$0"
