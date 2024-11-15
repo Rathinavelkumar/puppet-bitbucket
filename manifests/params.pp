@@ -9,7 +9,7 @@ class bitbucket::params {
       $init_template    = 'bitbucket.initscript.redhat.erb'
       $service_lockfile = '/var/lock/subsys/bitbucket'
 
-      if $::operatingsystemmajrelease == '7' {
+      if versioncmp($::operatingsystemmajrelease,'7') >= 0 {
         $json_packages = [ 'rubygem-json' ]
       } elsif $::operatingsystemmajrelease == '6' {
         $json_packages         = [ 'ruby-json', 'rubygem-json' ]
