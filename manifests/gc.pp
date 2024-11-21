@@ -21,7 +21,7 @@ class bitbucket::gc(
   $minute  = 0,
   $hour    = 0,
   $weekday = 'Sunday',
-  $user    = $bitbucket::user,
+  $user    = 'atlbitbucket',
   $homedir = $bitbucket::homedir,
   ) {
 
