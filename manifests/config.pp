@@ -4,8 +4,8 @@
 #
 class bitbucket::config(
   $version      = $bitbucket::version,
-  $user         = $bitbucket::user,
-  $group        = $bitbucket::group,
+  $user         = 'atlbitbucket',
+  $group        = 'atlbitbucket',
   $proxy        = $bitbucket::proxy,
   $context_path = $bitbucket::context_path,
   $tomcat_port  = $bitbucket::tomcat_port,
