@@ -33,6 +33,7 @@ class bitbucket::service  (
     service { 'bitbucket':
       ensure  => $service_ensure,
       enable  => $service_enable,
+      provider  => 'systemd',
       require => File[$service_file_location],
     }
   }
