@@ -9,7 +9,11 @@ class bitbucket::params {
       $init_template    = 'bitbucket.initscript.redhat.erb'
       $service_lockfile = '/var/lock/subsys/bitbucket'
 
-      if $::operatingsystemmajrelease == '7' {
+      # Handle specific versions for RedHat/CentOS/OL
+      if versioncmp($::operatingsystemmajrelease,'8') >= 0 {
+        $json_packages = [ 'rubygem-json' ]
+        $service_provider = 'systemd'  # Explicitly define systemd for RHEL8/CentOS8/OL8
+      } elsif versioncmp($::operatingsystemmajrelease,'7') == 0 {
         $json_packages = [ 'rubygem-json' ]
       } elsif $::operatingsystemmajrelease == '6' {
         $json_packages         = [ 'ruby-json', 'rubygem-json' ]
