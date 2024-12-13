@@ -4,9 +4,9 @@
 #
 class bitbucket::service  (
 
-  $service_manage        = $bitbucket::service_manage,
-  $service_ensure        = $bitbucket::service_ensure,
-  $service_enable        = $bitbucket::service_enable,
+  Boolean $service_manage        = $bitbucket::service_manage,
+  String $service_ensure        = $bitbucket::service_ensure,
+  Boolean $service_enable        = $bitbucket::service_enable,
   $service_file_location = $bitbucket::params::service_file_location,
   $service_file_mode     = $bitbucket::params::service_file_mode,
   $service_file_template = $bitbucket::params::service_file_template,
@@ -14,7 +14,6 @@ class bitbucket::service  (
 
 ) {
 
-  validate_bool($service_manage)
 
   if $bitbucket::service_manage {
 
@@ -23,8 +22,6 @@ class bitbucket::service  (
       mode    => $service_file_mode,
     }
 
-    validate_string($service_ensure)
-    validate_bool($service_enable)
 
     if ($::osfamily == 'RedHat' and $::operatingsystemmajrelease == '7') or ($::osfamily == 'Debian' and $::operatingsystemmajrelease == '16.04') {
       exec { 'bitbucket_refresh_systemd':
@@ -38,6 +35,7 @@ class bitbucket::service  (
     service { 'bitbucket':
       ensure  => $service_ensure,
       enable  => $service_enable,
+      provider  => 'systemd',
       require => File[$service_file_location],
     }
   }

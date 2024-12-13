@@ -43,7 +43,7 @@ class bitbucket(
   $sysadmin_password = 'bitbucket',
   $sysadmin_name  = 'Bitbucket Admin',
   $sysadmin_email = '',
-  $config_properties = {},
+  Hash $config_properties = {},
 
   # Database Settings
   $dbuser       = 'bitbucket',
@@ -97,8 +97,6 @@ class bitbucket(
   $deploy_module = 'archive',
 
 ) {
-
-  validate_hash($config_properties)
 
   include ::bitbucket::params
 
