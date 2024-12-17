@@ -15,7 +15,6 @@ class bitbucket::service  (
 ) {
 
   if $bitbucket::service_manage {
-
     file { $service_file_location:
       content => template($service_file_template),
       mode    => $service_file_mode,
