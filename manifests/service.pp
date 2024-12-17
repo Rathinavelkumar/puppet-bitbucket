@@ -14,15 +14,12 @@ class bitbucket::service  (
 
 ) {
 
-
   if $bitbucket::service_manage {
 
     file { $service_file_location:
       content => template($service_file_template),
       mode    => $service_file_mode,
-      notify  => Exec['bitbucket_refresh_systemd'],  # Trigger systemd reload if the file changes
     }
-
 
     exec { 'bitbucket_refresh_systemd':
       command     => 'systemctl daemon-reload',
@@ -36,7 +33,6 @@ class bitbucket::service  (
       enable  => $service_enable,
       provider  => 'systemd',
       require => File[$service_file_location],
-      subscribe => Exec['bitbucket_refresh_systemd'],  # Restart service if systemd is reloaded
     }
   }
 
