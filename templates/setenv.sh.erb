@@ -89,7 +89,7 @@ JVM_FILE_ENCODING="UTF-8"
 #
 # The following are the required arguments needed for Atlassian Bitbucket.
 #
-JVM_REQUIRED_ARGS="-Djava.awt.headless=true -Dfile.encoding=${JVM_FILE_ENCODING} -Datlassian.standalone=BITBUCKET -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dmail.mime.decodeparameters=true -Dorg.apache.catalina.connector.Response.ENFORCE_ENCODING_IN_GET_WRITER=false"
+JVM_REQUIRED_ARGS="-Djava.awt.headless=true -Dfile.encoding=${JVM_FILE_ENCODING} -Datlassian.standalone=BITBUCKET -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dmail.mime.decodeparameters=true -Dorg.apache.catalina.connector.Response.ENFORCE_ENCODING_IN_GET_WRITER=false -Djava.security.manager=allow"
 
 #
 # Uncommenting the following will set the umask for the Atlassian Bitbucket application. If can be used to override
