@@ -13,6 +13,10 @@ class bitbucket::params {
       if versioncmp($::operatingsystemmajrelease,'8') >= 0 {
         $json_packages = [ 'rubygem-json' ]
         $service_provider = 'systemd'  # Explicitly define systemd for RHEL8/CentOS8/OL8
+        exec { 'reload_bitbucket_units':
+          command     => 'systemctl daemon-reload',
+          refreshonly => true,
+        }
       } elsif versioncmp($::operatingsystemmajrelease,'7') == 0 {
         $json_packages = [ 'rubygem-json' ]
       } elsif $::operatingsystemmajrelease == '6' {
