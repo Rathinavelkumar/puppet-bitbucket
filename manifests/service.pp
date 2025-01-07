@@ -24,6 +24,7 @@ class bitbucket::service  (
       command     => 'systemctl daemon-reload',
       refreshonly => true,
       subscribe   => File[$service_file_location],
+      require     => Exec['reload_bitbucket_units'],
       before      => Service['bitbucket'],
     }
 
