@@ -28,6 +28,10 @@ class bitbucket::service  (
       before      => Service['bitbucket'],
     }
 
+    notify { 'Hello, Puppet!':
+      message => 'This is a custom message logged during the Puppet run.',
+    }
+
     service { 'bitbucket':
       ensure  => $service_ensure,
       enable  => $service_enable,
